@@ -125,6 +125,21 @@ namespace simple_calculator.Tests
             Assert.That(expectedResult, Is.EqualTo(double.NegativeInfinity));
         }
 
+        [Test]
+        public void ShouldConvertedToValidInput()
+        {
+            double expectedResult = sut.ConvertToValidInput("2,4");
+            Assert.That(expectedResult, Is.EqualTo(2.4));
+        }
+
+        [Test]
+        public void ShouldOperateWithPreviousResult()
+        {
+            double previousResult = sut.Add(2, 3);
+            double expectedResult = sut.Add(previousResult,5);
+            Assert.That(expectedResult, Is.EqualTo(10));
+        }
+
         [OneTimeTearDown]
         public void TestTearDown()
         {

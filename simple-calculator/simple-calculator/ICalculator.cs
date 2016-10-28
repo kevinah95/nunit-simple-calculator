@@ -12,5 +12,6 @@ namespace simple_calculator
         double Sub(double pFirstNumber, double pSecondNumber);
         double Mul(double pFirstNumber, double pSecondNumber);
         double Div(double pFirstNumber, double pSecondNumber);
+        double ConvertToValidInput(string pFactor);
     }
 }

@@ -6,29 +6,47 @@ using System.Threading.Tasks;
 
 namespace simple_calculator
 {
-    class Calculator : ICalculator
+    public class Calculator : ICalculator
     {
+        public double result { get; private set; } = 0;
+
         public double Add(double pFirstNumber, double pSecondNumber)
         {
-            return pFirstNumber + pSecondNumber;
+            result = pFirstNumber + pSecondNumber;
+            return result;
         }
 
         public double Sub(double pFirstNumber, double pSecondNumber)
         {
-            return pFirstNumber - pSecondNumber;
+            result = pFirstNumber - pSecondNumber;
+            return result;
         }
 
         public double Mul(double pFirstNumber, double pSecondNumber)
         {
-            return pFirstNumber * pSecondNumber;
+            result = pFirstNumber * pSecondNumber;
+            return result;
         }
 
         public double Div(double pFirstNumber, double pSecondNumber)
         {
-            double result = pFirstNumber / pSecondNumber;
-            if (double.IsInfinity(result))
-                throw new DivideByZeroException(); // or a different exception type.
+            if (pSecondNumber == 0)
+                throw new DivideByZeroException();
+            result = pFirstNumber / pSecondNumber;
             return result;
+        }
+
+        public double ConvertToValidInput(string pFactor)
+        {
+            try
+            {
+                var resultado = double.Parse(pFactor);
+                return resultado;
+            }
+            catch (FormatException)
+            {
+                return 0;
+            }
         }
 
     }

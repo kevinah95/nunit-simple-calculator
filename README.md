@@ -1,7 +1,7 @@
 # nunit-simple-calculator
 Useful simple test to understand the basics of NUnit
 
-## Description
+### Description
 
 Make the unit test to a calculator, with this operations:
 
@@ -15,8 +15,8 @@ Allow to operate with previous result.
 
 Validate inputs and outputs.
 
-Validate division by zero, overflow, invalid operations.
-## Packages
+Validate division by zero, overflow.
+### Packages
 
 - NUnit.3.5.0
 - NUnit.Runners.3.5.0

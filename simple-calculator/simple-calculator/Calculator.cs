@@ -25,7 +25,10 @@ namespace simple_calculator
 
         public double Div(double pFirstNumber, double pSecondNumber)
         {
-            return pFirstNumber / pSecondNumber;
+            double result = pFirstNumber / pSecondNumber;
+            if (double.IsInfinity(result))
+                throw new DivideByZeroException(); // or a different exception type.
+            return result;
         }
 
     }

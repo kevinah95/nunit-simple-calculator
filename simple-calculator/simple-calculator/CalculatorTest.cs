@@ -19,13 +19,116 @@ namespace simple_calculator.Tests
         }
 
         [Test]
-
-        public void ShouldAddTwoNumbers()
-
+        public void ShouldSumTwoNumbers()
         {
             double expectedResult = sut.Add(7, 8);
-
             Assert.That(expectedResult, Is.EqualTo(15));
+        }
+
+        [Test]
+        public void ShouldDifTwoNumbers()
+        {
+            double expectedResult = sut.Sub(8, 7);
+            Assert.That(expectedResult, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void ShouldDivTwoNumbers()
+        {
+            double expectedResult = sut.Div(8, 2);
+            Assert.That(expectedResult, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void ShouldMulTwoNumbers()
+        {
+            double expectedResult = sut.Mul(8, 2);
+            Assert.That(expectedResult, Is.EqualTo(16));
+        }
+
+
+        [Test]
+        public void ShouldSumTwoNegativeNumbers()
+        {
+            double expectedResult = sut.Add(-7, -8);
+            Assert.That(expectedResult, Is.EqualTo(-15));
+        }
+
+        [Test]
+        public void ShouldDifTwoNegativeNumbers()
+        {
+            double expectedResult = sut.Sub(-8, -7);
+            Assert.That(expectedResult, Is.EqualTo(-1));
+        }
+
+        [Test]
+        public void ShouldDivTwoNegativeNumbers()
+        {
+            double expectedResult = sut.Div(-8, -2);
+            Assert.That(expectedResult, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void ShouldMulTwoNegativeNumbers()
+        {
+            double expectedResult = sut.Mul(-8, -2);
+            Assert.That(expectedResult, Is.EqualTo(16));
+        }
+
+        [Test]
+        public void ShouldSumTwoDoubles()
+        {
+            double expectedResult = sut.Add(6.3, 0.2);
+            Assert.That(expectedResult, Is.EqualTo(6.5));
+        }
+
+        [Test]
+        public void ShouldDifTwoDoubles()
+        {
+            double expectedResult = sut.Sub(6.3, 0.2);
+            Assert.That(expectedResult, Is.EqualTo(6.1));
+        }
+
+        [Test]
+        public void ShouldDivTwoDoubles()
+        {
+            double expectedResult = sut.Div(6.3, 0.2);
+            Assert.That(expectedResult, Is.EqualTo(31.499999999999996d));
+        }
+
+        [Test]
+        public void ShouldMulTwoDoubles()
+        {
+            double expectedResult = sut.Mul(6.3, 0.2);
+            Assert.That(expectedResult, Is.EqualTo(1.26));
+        }
+
+        //Test documented
+        [Test]
+        public void ShouldDivisionByZero()
+        {
+            Assert.That(() => sut.Div(6, 0),
+                Throws.TypeOf<DivideByZeroException>());
+        }
+
+        [Test]
+        public void ShouldPositiveOverflow()
+        {
+            double expectedResult = sut.Add(double.MaxValue, double.MaxValue);
+            Assert.That(expectedResult, Is.EqualTo(double.PositiveInfinity));
+        }
+
+        [Test]
+        public void ShouldNegativeOverflow()
+        {
+            double expectedResult = sut.Add(double.MinValue, double.MinValue);
+            Assert.That(expectedResult, Is.EqualTo(double.NegativeInfinity));
+        }
+
+        [OneTimeTearDown]
+        public void TestTearDown()
+        {
+            sut = null;
         }
     }
 }
